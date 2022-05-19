@@ -3,6 +3,8 @@
 @using BlazorShop.Entities
 @using BlazorShop.Model
 @inject BlazorShop.Service.IBillDetailService BillDetailService;
+@inject BlazorShop.Service.IBillService BillService;
+@inject BlazorShop.Service.IProductService ProductService;
 @inject Blazored.SessionStorage.ISessionStorageService session
 @inject NavigationManager NavigationManager
 @layout AdminLayout
@@ -15,7 +17,7 @@
 else
 {
     <div class="d-flex justify-content-between">
-        <h4 style="display: inline-block;">Quản lý hóa đơn</h4>
+        <h4 style="display: inline-block;">Quản lý chi tiết hóa đơn</h4>
         <div>
             <Tooltip Title="@IconType.Outline.Search">
                 <Button Type="@ButtonType.Primary" Icon="@IconType.Outline.Search" />
@@ -26,10 +28,20 @@ else
        TItem="BillDetail"
        DataSource="@billDetails">
         <Selection Key="@context.Id" />
-        <Column Title="ID Hóa Đơn" @bind-Field="@context.Id" Sortable />
-        <Column Title="ID Nhân Viên" @bind-Field="@context.Id" Sortable />
-        <Column Title="Tổng tiền" @bind-Field="@context.Id" Sortable />
-        <Column Title="Ngày Lập Hóa Đơn" @bind-Field="@context.Id" Sortable />
+         <ActionColumn Title="Tên sản phẩm">
+            @ProductService.GetProductFromId(@context.ProductId).Name
+        </ActionColumn>
+         <ActionColumn Title="Hình">
+            <img style="width:100px;height:150px;" src="@ProductService.GetProductFromId(@context.ProductId).Images[0].Path" />
+        </ActionColumn>
+         <ActionColumn Title="Giá">
+            @ProductService.GetProductFromId(@context.ProductId).Price
+        </ActionColumn>
+
+        <Column Title="Số lượng" @bind-Field="@context.Amount" Sortable />
+         <ActionColumn Title="Tổng tiền">
+            @ProductService.GetProductFromId(@context.ProductId).Price * @context.Amount
+        </ActionColumn>
 
     </Table>
    

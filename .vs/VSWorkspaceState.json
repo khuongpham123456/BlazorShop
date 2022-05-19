@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\BlazorShop",
-    "\\BlazorShop\\Entities",
     "\\BlazorShop\\Pages",
+    "\\BlazorShop\\Pages\\Admin",
     "\\BlazorShop\\Pages\\Customer",
     "\\BlazorShop\\Service",
     "\\BlazorShop\\Service\\ServiceImp",

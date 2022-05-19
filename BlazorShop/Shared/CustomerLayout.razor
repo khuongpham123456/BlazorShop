@@ -1,6 +1,7 @@
 ﻿@using BlazorShop.Core.constant
 @using BlazorShop.Model
 @inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 @inject IJSRuntime jsRuntime
 @inject Blazored.SessionStorage.ISessionStorageService session
 
@@ -62,6 +63,7 @@
                             <div class="header__right__auth">
                                 @sessionUser.Name
                             </div>
+                            <div class="header__right__auth" @onclick=@(e => LogOut())><a>Đăng Xuất</a></div>
                         }
 
                         <ul class="header__right__widget">
@@ -224,8 +226,17 @@
     SessionUser sessionUser;
     protected override async Task OnInitializedAsync()
     {
-        
 
+
+    }
+
+    private async void LogOut()
+    {
+        session.RemoveItemAsync(SessionKey.CART);
+        session.RemoveItemAsync(SessionKey.CUSTOMER);
+        session.ClearAsync();
+        NavigationManager.NavigateTo("/");
+        OnAfterRenderAsync(true);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

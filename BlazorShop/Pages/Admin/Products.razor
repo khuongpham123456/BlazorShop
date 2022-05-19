@@ -145,9 +145,13 @@ else
         <FormItem Label="Giá sale">
             <AntDesign.InputNumber @bind-Value="@context.PriceSale" />
         </FormItem>
-        <FormItem Label="Số lượng hiện có">
+        @if (!isUpdate)
+        {
+            <FormItem Label="Số lượng hiện có">
             <AntDesign.InputNumber @bind-Value="@context.Amount" />
-        </FormItem>
+            </FormItem>
+        }
+        
         <FormItem Label="Hình ảnh sản phẩm">
             <div>
                 <form OnInvalidSubmit="onSubmitImage">
@@ -325,6 +329,19 @@ else
         {
             await onSubmitImage();
             ImageService.UpdateAll(imagesOfProduct);
+            SizeColorProductService.DeleteFromIdProduct(prd.Id);
+            for(int i=0;i<product.Sizes.Count();i++)
+            {
+                for(int j=0;j<product.ColorDBs.Count();j++)
+                {
+                    sizeColorProduct.ProductId = prd.Id;
+                    sizeColorProduct.ColorId = product.ColorDBs[j].Id;
+                    sizeColorProduct.SizeId = product.Sizes[i].Id;
+                    sizeColorProduct.Quantity = product.Amount;
+                    SizeColorProductService.Add(sizeColorProduct);
+                }
+            }
+            
         }
         getData();
         _visibleFormAddUpdate = false;

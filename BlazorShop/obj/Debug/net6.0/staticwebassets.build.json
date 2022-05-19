@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UyT+S5OFB0Ln9omF/QSmf4pcFhso0nr3Y5kvJ9ObS3A=",
+  "Hash": "oNxNmrmxW9TmLEIIQ6e1zzd0P/io+eoqLxDqscDH4EU=",
   "Source": "BlazorShop",
   "BasePath": "_content/BlazorShop",
   "Mode": "Default",
@@ -9059,6 +9059,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\upload\\hinhanh12.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Downloads\\BlazorShop\\BlazorShop\\wwwroot\\upload\\hinhanh16.jpg",
+      "SourceId": "BlazorShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Downloads\\BlazorShop\\BlazorShop\\wwwroot\\",
+      "BasePath": "_content/BlazorShop",
+      "RelativePath": "upload/hinhanh16.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\hinhanh16.jpg"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Downloads\\BlazorShop\\BlazorShop\\wwwroot\\upload\\hinhanh17.jpg",
