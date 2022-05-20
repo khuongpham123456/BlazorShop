@@ -40,7 +40,7 @@ else
 
         <Column Title="Số lượng" @bind-Field="@context.Amount" Sortable />
          <ActionColumn Title="Tổng tiền">
-            @ProductService.GetProductFromId(@context.ProductId).Price * @context.Amount
+            @(ProductService.GetProductFromId(context.ProductId).Price * context.Amount)
         </ActionColumn>
 
     </Table>

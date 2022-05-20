@@ -16,7 +16,9 @@
 
 @if(sessionCarts == null)
 {
-    <img style="width:400px;height:300px;margin-bottom:200px;" src="https://foodhub.vn/assets/images/no-cart.png" />
+    <div style="width:100%;">
+        <img style="margin-left:450px;width:400px;height:300px;margin-bottom:200px;align-items:center;" src="https://foodhub.vn/assets/images/no-cart.png" />
+    </div>
 }
 else
 {
@@ -57,7 +59,7 @@ else
                                 @foreach(var item in sessionCarts)
                                 {
                                     
-                                    //@Total = @ProductService.GetProductFromId(@item.ProductId).Price * @item.Amount;
+                                    @(Total += ProductService.GetProductFromId(item.ProductId).Price * item.Amount);
                                     <tr>
                                     <td class="cart__product__item">
                                         <img style="width:100px;height:150px;" src="@ProductService.GetProductFromId(@item.ProductId).Images[0].Path" alt="">
@@ -84,8 +86,8 @@ else
                                             <input type="text" value="@item.Amount">
                                         </div>
                                     </td>
-                                    "@ProductService.GetProductFromId(@item.ProductId).Price * @item.Amount"
-                                    <td class="cart__total">@price</td>
+                                    
+                                    <td class="cart__total">@(ProductService.GetProductFromId(item.ProductId).Price * item.Amount)</td>
                                     <td class="cart__close"><span @onclick=@(e => RemovedItem(item.ProductId, item.ColorId, item.SizeId)) class="icon_close"></span></td>
                                 </tr>
                                 }
@@ -185,7 +187,7 @@ else
         {
             Bill bill = new Bill();
             bill.CreatedDate = DateTime.Now;
-            bill.Total = 200;
+            bill.Total = Total;
             //Phải là customerID
             bill.CustomerId = CustomerService.GetCustomerFromIdAccount(sessionUser.Id).Id;
             bill.StatusBill = 0;

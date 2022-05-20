@@ -185,11 +185,11 @@
         if (products.Count() > 0)
         {
             productsPage.Clear();
-            pageNumber = (int)Math.Ceiling(products.Count() / 9.0);
+            pageNumber = (int)Math.Ceiling(products.Count() / 6.0);
             for (var i = 0; i < pageNumber; i++)
             {
                 List<Entities.Product> productPage = new List<Entities.Product>();
-                for (var j = 0; j < 9; j++)
+                for (var j = 0; j < 6; j++)
                 {
                     if (products.Count() > 0)
                     {
@@ -201,7 +201,6 @@
                 productsPage.Add(productPage);
             }
             productPageCur = productsPage[curPage];
-            Console.WriteLine(productPageCur[0].Images[0].Path);
         }else
         {
             productPageCur.Clear();
